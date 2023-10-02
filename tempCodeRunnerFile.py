@@ -1,0 +1,1 @@
+results = np.argmax(class_probabilities)
