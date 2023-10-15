@@ -10,14 +10,19 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-model = load_model('brainTumor10EpochsCategorical.keras')
+model = load_model('brainTumor10ClassificationEpochsCategorical.keras')
 print('Model Loded. Check http://127.0.0.1:5000/')
 
 def get_className(classNo):
+    print(classNo)
     if classNo == 0:
         return "Brain Tumor is not Present"
     elif classNo == 1:
-        return "Brain Tumor is Present"
+        return "Brain Tumor is Present and it can be classified as Glioma"
+    elif classNo == 2:
+        return "Brain Tumor is Present and it can be classified as Pituitary"
+    elif classNo == 3:
+        return "Brain Tumor is Present and it can be classified as Meningioma"
     
 def getResult(img):
     image= cv2.imread(img)
@@ -31,9 +36,10 @@ def getResult(img):
     results = np.argmax(class_probabilities)
 
 # Print the predicted class
-    print(results)
+    print(class_probabilities)
     
     #result=model.predict_classes(input_img)
+
     return results
 
 
@@ -49,7 +55,7 @@ def upload():
 
         basepath = os.path.dirname(__file__)
         file_path = os.path.join(
-            basepath, 'datasets\pred', secure_filename(f.filename))
+            basepath, 'datasets\Testing', secure_filename(f.filename))
         f.save(file_path)
         print(file_path)
         value=getResult(file_path)

@@ -2,14 +2,15 @@ import cv2
 from keras.models import load_model
 from PIL import Image
 import numpy as np
+from sklearn.metrics import accuracy_score
 
 
 
 INPUT_SIZE = 64
 
 
-model = load_model('brainTumor10EpochsCategorical.keras')
-image = cv2.imread('D:\\Python Programming A Practical Approach\\7th Sem Project\\Project\\datasets\\pred\\pred9.jpg')
+model = load_model('brainTumor10ClassificationEpochsCategoricalFinal3.keras')
+image = cv2.imread('datasets\\Testing\\pituitary_tumor\\image(11).jpg')
 
 img = Image.fromarray(image)
 img = img.resize((64, 64))
