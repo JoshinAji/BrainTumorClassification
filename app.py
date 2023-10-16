@@ -17,8 +17,6 @@ def get_className(classNo):
     print(classNo)
     if classNo == 0:
         return "Brain Tumor is not Present"
-    elif classNo == 1:
-        return "Brain Tumor is Present and it can be classified as Glioma"
     elif classNo == 2:
         return "Brain Tumor is Present and it can be classified as Pituitary"
     elif classNo == 3:

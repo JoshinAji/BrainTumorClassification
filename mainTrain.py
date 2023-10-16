@@ -5,7 +5,7 @@ from tensorflow import keras
 from PIL import Image
 import numpy as np
 from sklearn.model_selection import train_test_split
-from keras.utils import normalize,to_categorical
+from keras.utils import normalize, to_categorical
 from keras.models import Sequential
 from keras.layers import Conv2D, GlobalMaxPooling2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
@@ -18,7 +18,7 @@ label = []
 #Performing Data Extraction from the file
 image_directory = "datasets/"
 no_tumor_image = os.listdir(image_directory + "no/")
-yes_tumor_glioma_image = os.listdir(image_directory + "yes/" + "glioma_tumor/")
+#yes_tumor_glioma_image = os.listdir(image_directory + "yes/" + "glioma_tumor/")
 yes_tumor_pituitary_image = os.listdir(image_directory + "yes/" + "pituitary_tumor/")
 yes_tumor_meningioma_image = os.listdir(image_directory + "yes/" + "meningioma_tumor/")
 
@@ -34,13 +34,6 @@ for i, image_name in enumerate(no_tumor_image):
         datasets.append(np.array(image))
         label.append(0)
 
-for i, image_name in enumerate(yes_tumor_glioma_image):
-    if(image_name.split('.')[1] == 'jpg'):
-        image = cv2.imread(image_directory+"yes/"+ "glioma_tumor/" + image_name)
-        image = Image.fromarray(image, 'RGB') #Image editoor that converst the image into array
-        image = image.resize((INPUT_SIZE, INPUT_SIZE))
-        datasets.append(np.array(image)) #importing images as a numpy array into dataset list
-        label.append(1)
 
 for i, image_name in enumerate(yes_tumor_pituitary_image):
     if(image_name.split('.')[1] == 'jpg'):
@@ -116,4 +109,4 @@ model.fit(x_train, y_train, batch_size=8,
           validation_data=(x_test, y_test),
           shuffle=True)
 
-model.save('brainTumor10ClassificationEpochsCategoricalFinal.keras')
+model.save('brainTumor10ClassificationEpochsCategorical.keras')

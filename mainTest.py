@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score
 INPUT_SIZE = 64
 
 
-model = load_model('brainTumor10ClassificationEpochsCategoricalFinal3.keras')
+model = load_model('brainTumor10ClassificationEpochsCategorical.keras')
 image = cv2.imread('datasets\\Testing\\pituitary_tumor\\image(11).jpg')
 
 img = Image.fromarray(image)
