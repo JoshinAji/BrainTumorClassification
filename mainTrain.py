@@ -18,7 +18,6 @@ label = []
 #Performing Data Extraction from the file
 image_directory = "datasets/"
 no_tumor_image = os.listdir(image_directory + "no/")
-#yes_tumor_glioma_image = os.listdir(image_directory + "yes/" + "glioma_tumor/")
 yes_tumor_pituitary_image = os.listdir(image_directory + "yes/" + "pituitary_tumor/")
 yes_tumor_meningioma_image = os.listdir(image_directory + "yes/" + "meningioma_tumor/")
 
